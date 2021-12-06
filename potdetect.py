@@ -35,9 +35,9 @@ train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
-training_set = train_datagen.flow_from_directory('/home/manavi/Potholes/potholeimages/training-set', target_size=(64, 64), batch_size=32, class_mode='binary')
+training_set = train_datagen.flow_from_directory('/home/Potholes/potholeimages/training-set', target_size=(64, 64), batch_size=32, class_mode='binary')
 
-test_set = test_datagen.flow_from_directory('/home/manavi/Potholes/potholeimages/testing-set', target_size=(64, 64), batch_size=32, class_mode='binary')
+test_set = test_datagen.flow_from_directory('/home/Potholes/potholeimages/testing-set', target_size=(64, 64), batch_size=32, class_mode='binary')
 
 classifier.fit_generator(training_set, steps_per_epoch=846, epochs=25, validation_data=test_set, validation_steps=101)
 
@@ -56,4 +56,4 @@ def predictImg(imgpath):
     result = classifier.predict(predict_image)
     return result.max()
 
-predictImg('/home/manavi/Potholes/potholeimages/100.jpg')
+predictImg('/home/Potholes/potholeimages/100.jpg')
